@@ -1,0 +1,252 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Courier New', monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #0a0a0a;
+    color: #ff6b35;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, rgba(255, 107, 53, 0.05) 0%, transparent 50%);
+  }
+
+  /* Light mode styles */
+  html.light body {
+    background-color: #f5f5f5;
+    color: #333;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, rgba(255, 107, 53, 0.02) 0%, transparent 50%);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+
+  html.light ::-webkit-scrollbar-track {
+    background: #e0e0e0;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ff6b35, #ff8c42);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #ff8c42, #ffa726);
+  }
+}
+
+/* Custom component classes */
+@layer components {
+  .nav-link {
+    @apply text-gray-400 hover:text-orange-500 transition-all duration-300 px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wider border-b-2 border-transparent hover:border-orange-500;
+    text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+  }
+
+  html.light .nav-link {
+    @apply text-gray-600 hover:text-orange-600;
+    text-shadow: 0 0 5px rgba(255, 107, 53, 0.2);
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-500 hover:to-orange-600 text-white font-bold py-3 px-6 rounded transition-all duration-300 transform hover:scale-105;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-secondary {
+    @apply border-2 border-orange-600 text-orange-400 hover:bg-orange-600 hover:text-white font-bold py-3 px-6 rounded transition-all duration-300 transform hover:scale-105;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2);
+  }
+
+  .weapon-card {
+    @apply bg-gray-900 border-2 border-orange-800 rounded-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:border-orange-600 hover:shadow-2xl hover:shadow-orange-900/50;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    box-shadow: 0 8px 32px rgba(255, 107, 53, 0.3);
+  }
+
+  html.light .weapon-card {
+    @apply bg-gray-100 border-orange-400;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+    box-shadow: 0 8px 32px rgba(255, 107, 53, 0.2);
+  }
+
+  .hero-section {
+    @apply relative h-screen flex items-center justify-center;
+    background:
+      radial-gradient(ellipse at center, rgba(255, 107, 53, 0.15) 0%, transparent 70%),
+      linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
+  }
+
+  html.light .hero-section {
+    background:
+      radial-gradient(ellipse at center, rgba(255, 107, 53, 0.08) 0%, transparent 70%),
+      linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  }
+
+  .death-text {
+    @apply text-orange-500 font-bold tracking-wider;
+    text-shadow: 0 0 20px rgba(255, 107, 53, 0.8), 0 0 40px rgba(255, 107, 53, 0.4);
+  }
+
+  html.light .death-text {
+    @apply text-orange-600;
+    text-shadow: 0 0 10px rgba(255, 107, 53, 0.4), 0 0 20px rgba(255, 107, 53, 0.2);
+  }
+
+  .skull-icon {
+    @apply inline-block;
+    filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.6));
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-orange-gradient {
+    @apply bg-gradient-to-r from-orange-400 via-orange-500 to-orange-700 bg-clip-text text-transparent;
+    filter: drop-shadow(0 0 5px rgba(255, 107, 53, 0.5));
+  }
+
+  .death-glow {
+    box-shadow: 0 0 30px rgba(255, 107, 53, 0.6), inset 0 0 30px rgba(255, 107, 53, 0.1);
+  }
+
+  .blood-splatter {
+    position: relative;
+  }
+
+  .blood-splatter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      radial-gradient(circle at 10% 20%, rgba(255, 107, 53, 0.1) 0%, transparent 20%),
+      radial-gradient(circle at 90% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 20%),
+      radial-gradient(circle at 50% 50%, rgba(255, 107, 53, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .death-border {
+    border: 2px solid #ff6b35;
+    box-shadow:
+      0 0 10px rgba(255, 107, 53, 0.5),
+      inset 0 0 10px rgba(255, 107, 53, 0.1);
+  }
+}
+
+/* Animations */
+@keyframes pulse-orange {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 107, 53, 0.8);
+  }
+}
+
+.animate-pulse-orange {
+  animation: pulse-orange 2s infinite;
+}
+
+/* Loading animation */
+@keyframes death-loading {
+  0% {
+    transform: rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}
+
+.death-loading {
+  animation: death-loading 3s linear infinite;
+}
+
+/* Elegant orange gradient backgrounds */
+.bg-elegant-dark {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+}
+
+.bg-orange-armory {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 140, 66, 0.08) 0%, transparent 50%);
+}
+
+.text-elegant-orange {
+  color: #ff6b35;
+  text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+}
+
+.border-elegant-orange {
+  border-color: #ff6b35;
+  box-shadow: 0 0 15px rgba(255, 107, 53, 0.2);
+}
+
+/* Hover effects */
+.hover-orange-glow:hover {
+  box-shadow: 0 0 25px rgba(255, 107, 53, 0.6);
+  border-color: #ff8c42;
+}
+
+/* Card hover effects */
+.card-orange-hover {
+  transition: all 0.3s ease;
+}
+
+.card-orange-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+  border-color: #ffa726;
+}
+
+/* Orange gradient text */
+.text-gradient-orange {
+  background: linear-gradient(135deg, #ff6b35, #ff8c42, #ffa726);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Orange glow effects */
+.orange-glow {
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+}
+
+.orange-glow-strong {
+  box-shadow: 0 0 30px rgba(255, 107, 53, 0.6);
+}
+
+/* Background gradients */
+.bg-gradient-armory {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+}
+
+.bg-gradient-orange-dark {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  background-image:
+    radial-gradient(ellipse at top, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(255, 140, 66, 0.05) 0%, transparent 50%);
+}

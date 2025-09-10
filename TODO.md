@@ -1,0 +1,7 @@
+- [x] Import formatPrice from CartContext in cart.jsx
+- [x] Update individual item price display to use formatPrice and correct currency parsing
+- [x] Update subtotal, tax, and total price displays to use formatPrice
+- [x] Fix price parsing inconsistency in RPGBazooka.jsx (changed from '$' to '₹')
+- [x] Fix CartButton.jsx to use formatPrice for consistent formatting
+- [x] Fix CartContext.jsx to replace all commas globally in price parsing
+- [ ] Test the cart price calculations and displays
